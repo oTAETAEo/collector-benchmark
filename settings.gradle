@@ -1,0 +1,6 @@
+rootProject.name = 'collector-benchmark'
+
+include 'common-domain'
+include 'collector-mvc'
+include 'collector-webflux'
+include 'mock-binance-server'
