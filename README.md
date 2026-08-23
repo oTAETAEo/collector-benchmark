@@ -1,6 +1,6 @@
 # Collector Benchmark
 
-#### Spring MVC 기반 collector와 WebFlux 기반 collector가 동일한 Binance 형식 캔들 스트림을 처리할 때, 안정성 관점에서 어떤 차이가 있는지 비교한다.
+#### Binance 형식 캔들 스트림을 기준으로 Spring MVC와 WebFlux collector의 Kafka publish 안정성과 흐름 제어 방식을 비교한다.
 
 이 프로젝트에서 안정성은 다음과 같이 정의한다.
 > 동일한 Binance 형식 캔들 스트림이 정상 부하와 burst 부하로 유입될 때, collector가 메시지를 유실하지 않고, symbol 단위 순서를 유지하며, Kafka publish 실패 없이 처리하고, 부하 종료 후 backlog를 회복하는 능력.
@@ -28,7 +28,7 @@ collector-benchmark/
 
 ## 1차 Benchmark Scope
 
-> 1차 벤치마크는 로컬 단일 머신에서 진행하며, 실제 Binance 네트워크 환경을 재현하지 않는다. 동일 입력 조건에서 MVC 기반 collector와 WebFlux 기반 collector의 상대적인 안정성을 비교한다.
+> 1차 벤치마크는 로컬 단일 머신에서 진행하며, 실제 Binance 네트워크 환경을 재현하지 않는다. 동일 입력 조건에서 MVC의 worker 기반 흐름 제어와 WebFlux의 Reactor 기반 흐름 제어가 Kafka publish 안정성에 어떤 차이를 만드는지 비교한다.
 
 | 지표 | 의미 |
 | --- | --- |
